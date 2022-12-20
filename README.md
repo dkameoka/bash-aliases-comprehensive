@@ -3,11 +3,11 @@
 * Uses long-form argument names
 * Uses null item separators where possible, to allow file paths with any characters
 * More verbose and prompts for confirmation on deletions
-* Provides help with `help-more' that also has some useful command templates
+* Provides help with `help-more` that also has some useful command templates
 * Useful commands for Arch Linux
 * Creates a script (/etc/custom.bashrc) to be sourced, so it only needs to append a single line to /etc/bash.bashrc
 
-## Uses
+## Utilizes
 
 * exa: item listing
 * fd: faster alternative to find. However, find is still needed for printf
