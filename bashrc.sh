@@ -221,8 +221,8 @@ HISTFILESIZE=-1
 HISTSIZE=-1
 HISTCONTROL=ignoreboth
 HISTIGNORE=''
-shopt -s histappend cmdhist
-shopt -u lithist
+shopt -s histappend
+shopt -u lithist cmdhist
 export PROMPT_COMMAND='history -a'
 
 ##### PACMAN #####
