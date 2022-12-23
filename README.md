@@ -35,6 +35,8 @@ Review the bashrc.sh and run bashrc.sh as root.
 * mkdir
 * sudo
 * doas
+* xargsf
+* xargsfr
 * execf
 * openf
 * cdf
