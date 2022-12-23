@@ -126,9 +126,9 @@ Pacman: Rollback selected Pacman packages from cache: pacman-rollback
 Yay: Clean AUR cache: yay-clean-aur
 
 Template: Make a clip from a video: ffmpeg -ss 00:01:23 -to 00:04:56 -i input.mkv -codec copy output_clip.mkv
-Template: Select videos to compress with AV1: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace ffmpeg -i "{}" -vcodec libaom-av1 -crf 35 "{}.av1.mkv"
-Template: Select videos to compress with HEVC: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace ffmpeg -i "{}" -vcodec libx265 -crf 28 "{}.h265.mp4"
-Template: Select images to convert to JPEGXL: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace cjxl "{}" "{}.jxl" --distance 1
+Template: Select videos to compress with AV1: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace ffmpeg -i {} -vcodec libaom-av1 -crf 35 {}.av1.mkv
+Template: Select videos to compress with HEVC: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace ffmpeg -i {} -vcodec libx265 -crf 28 {}.h265.mp4
+Template: Select images to convert to JPEGXL: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace cjxl {} {}.jxl --distance 1
 Template: Ripgrep: rg --ignore-case/-i --hidden/-. --context/-C num-of-context-lines --file/-f "regex pattern" dir/or/file
 Template: Rename selected files using perl's expression. Remove --just-print to apply it: fd --print0 . "$HOME" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null perl-rename --just-print 's/\.jpeg$/\.jpg/'
 Template: Generate SSH keypair: ssh-keygen -t ed25519 -a 100 -f ~/.ssh/service_name_here -C "your@email.here"
@@ -154,7 +154,7 @@ alias doas='doas '
 alias xargsf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace'
 alias xargsfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace'
 alias execf='"$(fd --type executable --hidden --exclude .git --print0 . / | fzf --read0)"'
-alias openf='fd --type file --hidden --exclude .git --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace xdg-open "{}"'
+alias openf='fd --type file --hidden --exclude .git --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace xdg-open {}'
 alias cdf='cd "$(fd --type directory --hidden --exclude .git --print0 . "$HOME/" | fzf --read0)"'
 alias cdfr='cd "$(fd --type directory --hidden --exclude .git --print0 . / | fzf --read0)"'
 alias findf='fd --hidden --exclude .git --print0 . "$HOME/" | fzf --multi --read0'
@@ -165,8 +165,8 @@ alias lss='exa --long --header --git --sort size'
 alias lsn='exa --long --header --git --sort name'
 alias lsm='exa --long --header --git --sort mod'
 alias lse='exa --long --header --git --sort ext'
-alias renamef='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv "{}"'
-alias renamefr='fd --type file --type symlink --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv "{}"'
+alias renamef='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv {}'
+alias renamefr='fd --type file --type symlink --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv {}'
 alias prepend-date='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf --multi --read0 --print0 | date-tag'
 alias prepend-dater='fd --type file --type symlink --hidden --print0 . / | fzf --multi --read0 --print0 | date-tag'
 alias vim='nvim'
@@ -174,14 +174,14 @@ alias nvimf='fd --type file --type symlink --hidden --exclude .git --print0 . "$
 alias nvimfr='fd --type file --type symlink --hidden --exclude .git --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null nvim'
 alias cpf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null cp --interactive --recursive --verbose --target-directory .'
 alias cpfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null cp --interactive --recursive --verbose --target-directory .'
-alias cptof='fd --type directory --hidden --print0 . "$HOME/" | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null cp --interactive --recursive --verbose --target-directory "{}"'
-alias cptofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null cp --interactive --recursive --verbose --target-directory "{}"'
+alias cptof='fd --type directory --hidden --print0 . "$HOME/" | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null cp --interactive --recursive --verbose --target-directory {}'
+alias cptofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null cp --interactive --recursive --verbose --target-directory {}'
 alias mergef='fd --type directory --hidden --print0 . "$HOME/" | fzf --read0 --print0 | xargs --no-run-if-empty --null rsync --archive --verbose --itemize-changes --progress .'
 alias mergefr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 | xargs --no-run-if-empty --null rsync --archive --verbose --itemize-changes --progress .'
 alias mvf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null mv --interactive --verbose --target-directory .'
 alias mvfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null mv --interactive --verbose --target-directory .'
-alias mvtof='fd --type directory --hidden --print0 . "$HOME/" | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null mv --interactive --verbose --target-directory "{}"'
-alias mvtofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null mv --interactive --verbose --target-directory "{}"'
+alias mvtof='fd --type directory --hidden --print0 . "$HOME/" | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null mv --interactive --verbose --target-directory {}'
+alias mvtofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null mv --interactive --verbose --target-directory {}'
 alias rmf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias rmfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 
