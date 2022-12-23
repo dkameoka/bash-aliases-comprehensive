@@ -53,6 +53,8 @@ fzf --tac --no-sort --multi << 'EOHM'
 Info: While using fzf in multi mode as you are currently, (de)select items with the tab or shift+tab.
 Info: CWD means Current Working Directory.
 
+Common: Run a command for each selected item from home in place of {}: xargsf  command {}
+Common: Run a command for each selected item from / in place of {}: xargsfr  command {}
 Common: Execute a file: execf
 Common: Open selected files by MIME type: openf
 Common: Change to selected directory from home: cdf
@@ -149,6 +151,8 @@ alias sudo='sudo '
 #alias sudo='doas '
 alias doas='doas '
 
+alias xargsf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace'
+alias xargsfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace'
 alias execf='"$(fd --type executable --hidden --exclude .git --print0 . / | fzf --read0)"'
 alias openf='fd --type file --hidden --exclude .git --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace xdg-open "{}"'
 alias cdf='cd "$(fd --type directory --hidden --exclude .git --print0 . "$HOME/" | fzf --read0)"'
