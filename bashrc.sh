@@ -117,12 +117,28 @@ History: Turn off history: history-off
 History: Show history: hist
 History: Search history and optionally execute selected: histf
 
-Pacman: Suggestion: Use the Yay tool as a user instead because it supports Arch User Repositories.
+Pacman: Search packages: pacman-search  regex-pattern
+Pacman: Install packages: pacman-install  packages...
+Pacman: Update system: pacman-update
+Pacman: Remove packages with parent and child dependencies: pacman-remove  packages...
+Pacman: Mark packages as explicitly installed (hidden from pacman-orphans): pacman-database-asexplicit  packages...
+Pacman: Mark packages as non-explicitly installed (shown in pacman-orphans): pacman-database-asdeps  packages...
 Pacman: List Pacman explicitly installed packages: pacman-installed-explicit
 Pacman: List Pacman orphaned packages: pacman-orphans
-Pacman: Clean Pacman package cache by removing all uninstalled package caches and keeping only 2 versions of installed packages: pacman-clean-cache
 Pacman: List foreign (AUR) packages: pacman-installed-foreign
 Pacman: Rollback selected Pacman packages from cache: pacman-rollback
+
+Pacman/Paccache: Remove all uninstalled package caches and keep only 2 installed versions: paccache-clean
+
+Yay: Search packages: yay-search  regex-pattern
+Yay: Install packages: yay-install  packages...
+Yay: Update system (or just run "yay"): yay-update
+Yay: Remove packages with parent and child dependencies: yay-remove  packages...
+Yay: Mark packages as explicitly installed (hidden from yay-orphans): yay-database-asexplicit  packages...
+Yay: Mark packages as non-explicitly installed (shown in yay-orphans): yay-database-asdeps  packages...
+Yay: List Pacman explicitly installed packages: yay-installed-explicit
+Yay: List Pacman orphaned packages: yay-orphans
+Yay: List foreign (AUR) packages: yay-installed-foreign
 Yay: Clean AUR cache: yay-clean-aur
 
 Template: Make a clip from a video: ffmpeg -ss 00:01:23 -to 00:04:56 -i input.mkv -codec copy output_clip.mkv
@@ -230,11 +246,28 @@ shopt -u lithist cmdhist
 export PROMPT_COMMAND='history -a'
 
 ##### PACMAN #####
+alias pacman-search='pacman --sync --search'
+alias pacman-install='pacman --sync'
+alias pacman-update='pacman --sync --refresh --sysupgrade'
+alias pacman-remove='pacman --remove --cascade --recursive'
+alias pacman-database-asexplicit='pacman --database --asexplicit'
+alias pacman-database-asdeps='pacman --database --asdeps'
 alias pacman-installed-explicit='pacman --query --explicit | fzf --multi --no-sort'
-alias pacman-orphans='pacman --query --deps --quiet --unrequired'
-alias pacman-clean-cache='echo "Cleaning uninstalled cache"; paccache --remove --uninstalled --keep 0; echo "Cleaning cache"; paccache --remove --keep 2'
-alias pacman-installed-foreign='pacman --query --foreign'
+alias pacman-orphans='pacman --query --deps --quiet --unrequired | fzf --multi --no-sort'
+alias pacman-installed-foreign='pacman --query --foreign | fzf --multi --no-sort'
 alias pacman-rollback='find /var/cache/pacman/pkg/ -name *.zst -type f -printf "%C@ %Cc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0 --print0 | cut --zero-terminated --delimiter " " --fields 8- | xargs --no-run-if-empty --null --open-tty --verbose pacman --upgrade --confirm'
+
+alias paccache-clean='echo "Cleaning uninstalled cache"; paccache --remove --uninstalled --keep 0; echo "Cleaning cache"; paccache --remove --keep 2'
+
+alias yay-search='yay --sync --search'
+alias yay-install='yay --sync'
+alias yay-update='yay --sync --refresh --sysupgrade'
+alias yay-remove='yay --remove --cascade --recursive'
+alias yay-database-asexplicit='yay --database --asexplicit'
+alias yay-database-asdeps='yay --database --asdeps'
+alias yay-installed-explicit='yay --query --explicit | fzf --multi --no-sort'
+alias yay-orphans='yay --query --deps --quiet --unrequired | fzf --multi --no-sort'
+alias yay-installed-foreign='yay --query --foreign | fzf --multi --no-sort'
 alias yay-clean-aur='yay --sync --clean --aur'
 
 EOBRC
