@@ -49,6 +49,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * lsn
 * lsm
 * lse
+* dut
 * renamef
 * renamefr
 * prepend-date

@@ -66,6 +66,7 @@ Common: Print CWD sorted by size: lss
 Common: Print CWD sorted by name: lsn
 Common: Print CWD sorted by modified: lsm
 Common: Print CWD sorted by extension: lse
+Common: Print device (space) usage and total for items: dut  items...
 Common: Rename selected files from home: renamef
 Common: Rename selected files from /: renamefr
 Common: Prepend oldest file date (creation or modified) to selected files' names from home: prepend-date  [--format "%Y-%m-%d-"]
@@ -181,6 +182,7 @@ alias lss='exa --long --header --git --sort size'
 alias lsn='exa --long --header --git --sort name'
 alias lsm='exa --long --header --git --sort mod'
 alias lse='exa --long --header --git --sort ext'
+alias dut='du --human-readable --summarize --total --si'
 alias renamef='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv {}'
 alias renamefr='fd --type file --type symlink --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv {}'
 alias prepend-date='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf --multi --read0 --print0 | date-tag'
