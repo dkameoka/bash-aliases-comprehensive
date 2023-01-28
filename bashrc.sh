@@ -85,6 +85,7 @@ Common: Move passed argument items into selected directory from home: mvtof  ite
 Common: Move passed argument items into selected directory from /: mvtofr  items...
 Common: Remove selected items from home: rmf
 Common: Remove selected items from /: rmfr
+Common: Remove selected items from CWD: rmfh
 
 Files: Remove duplicate files using fdupes tool: files-dup-remove
 Files: Show largest files recursively from CWD: files-largest
@@ -202,6 +203,7 @@ alias mvtof='fd --type directory --hidden --print0 . "$HOME/" | fzf --read0 --pr
 alias mvtofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null mv --interactive --verbose --target-directory {}'
 alias rmf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias rmfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
+alias rmfh='find . -mindepth 1 -maxdepth 1 -print0 | sort --zero-terminated --ignore-case | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 
 alias files-dup-remove='fdupes --size --time --delete .'
 alias files-largest='find . -type f -printf "%s %p\0" | sort --numeric-sort --reverse --zero-terminated | fzf --multi --no-sort --read0'

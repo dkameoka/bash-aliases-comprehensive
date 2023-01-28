@@ -69,6 +69,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * mvtofr
 * rmf
 * rmfr
+* rmfh
 * files-dup-remove
 * files-largest
 * files-last-modified
