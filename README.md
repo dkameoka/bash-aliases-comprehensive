@@ -101,6 +101,8 @@ Review the bashrc.sh and run bashrc.sh as root.
 * pacman-remove
 * pacman-database-asexplicit
 * pacman-database-asdeps
+* pacman-info
+* pacman-info-installed
 * pacman-installed-explicit
 * pacman-orphans
 * pacman-installed-foreign
@@ -112,6 +114,8 @@ Review the bashrc.sh and run bashrc.sh as root.
 * yay-remove
 * yay-database-asexplicit
 * yay-database-asdeps
+* yay-info
+* yay-info-installed
 * yay-installed-explicit
 * yay-orphans
 * yay-installed-foreign
