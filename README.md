@@ -107,6 +107,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * pacman-installed-explicit
 * pacman-orphans
 * pacman-installed-foreign
+* pacman-list-missing-files
 * pacman-rollback
 * paccache-clean
 * yay-search
@@ -120,4 +121,5 @@ Review the bashrc.sh and run bashrc.sh as root.
 * yay-installed-explicit
 * yay-orphans
 * yay-installed-foreign
+* yay-list-missing-files
 * yay-clean-aur

@@ -131,6 +131,7 @@ Pacman: Show installed packages' info: pacman-info-installed  packages...
 Pacman: List Pacman explicitly installed packages: pacman-installed-explicit
 Pacman: List Pacman orphaned packages: pacman-orphans
 Pacman: List foreign (AUR) packages: pacman-installed-foreign
+Pacman: List missing package files: pacman-list-missing-files
 Pacman: Rollback selected Pacman packages from cache: pacman-rollback
 
 Pacman/Paccache: Remove all uninstalled package caches and keep only 2 installed versions: paccache-clean
@@ -146,6 +147,7 @@ Yay: Show installed packages' info: yay-info-installed  packages...
 Yay: List Pacman explicitly installed packages: yay-installed-explicit
 Yay: List Pacman orphaned packages: yay-orphans
 Yay: List foreign (AUR) packages: yay-installed-foreign
+Yay: List missing package files: yay-list-missing-files
 Yay: Clean AUR cache: yay-clean-aur
 
 Template: Make a clip from a video: ffmpeg -ss 00:01:23 -to 00:04:56 -i input.mkv -codec copy output_clip.mkv
@@ -267,6 +269,7 @@ alias pacman-info-installed='pacman --query --info --info'
 alias pacman-installed-explicit='pacman --query --explicit | fzf --multi --no-sort'
 alias pacman-orphans='pacman --query --deps --quiet --unrequired | fzf --multi --no-sort'
 alias pacman-installed-foreign='pacman --query --foreign | fzf --multi --no-sort'
+alias pacman-list-missing-files='pacman --query --check | grep --invert-match " 0 missing"'
 alias pacman-rollback='find /var/cache/pacman/pkg/ -name *.zst -type f -printf "%C@ %Cc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0 --print0 | cut --zero-terminated --delimiter " " --fields 8- | xargs --no-run-if-empty --null --open-tty --verbose pacman --upgrade --confirm'
 
 alias paccache-clean='echo "Cleaning uninstalled cache"; paccache --remove --uninstalled --keep 0; echo "Cleaning cache"; paccache --remove --keep 2'
@@ -282,6 +285,7 @@ alias yay-info-installed='yay --query --info --info'
 alias yay-installed-explicit='yay --query --explicit | fzf --multi --no-sort'
 alias yay-orphans='yay --query --deps --quiet --unrequired | fzf --multi --no-sort'
 alias yay-installed-foreign='yay --query --foreign | fzf --multi --no-sort'
+alias yay-list-missing-files='yay --query --check | grep --invert-match " 0 missing"'
 alias yay-clean-aur='yay --sync --clean --aur'
 
 EOBRC
