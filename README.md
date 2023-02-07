@@ -71,6 +71,8 @@ Review the bashrc.sh and run bashrc.sh as root.
 * rmf
 * rmfr
 * rmfh
+* diffm
+* gitdiffm
 * files-dup-remove
 * files-largest
 * files-last-modified

@@ -87,6 +87,8 @@ Common: Move passed argument items into selected directory from /: mvtofr  items
 Common: Remove selected items from home: rmf
 Common: Remove selected items from /: rmfr
 Common: Remove selected items from CWD: rmfh
+Common: Minimal diff: diffm  old/item  new/item
+Common: Minimal git diff: gitdiffm  old/item  new/item
 
 Files: Remove duplicate files using fdupes tool: files-dup-remove
 Files: Show largest files recursively from CWD: files-largest
@@ -218,6 +220,8 @@ alias files-largest='find . -type f -printf "%s %p\0" | sort --numeric-sort --re
 alias files-last-modified='find . -type f -not -path "*/\.git/*" -printf "%T@ %Tc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0'
 alias files-tar-zst='tar --create --recursion --hard-dereference --dereference --verbose --zstd --file'
 alias files-tar-extract='tar --extract --verbose --file'
+alias diffm='diff --color=always --unified=0 --recursive --new-file --ignore-tab-expansion --ignore-trailing-space --ignore-blank-lines'
+alias gitdiffm='git diff --color=always --unified=0 --ignore-cr-at-eol --ignore-space-at-eol --ignore-blank-lines'
 
 ##### SYSTEM #####
 alias cpu-usage='ps aux --sort -pcpu,-pmem | fzf --multi'
