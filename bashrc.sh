@@ -60,6 +60,7 @@ Common: Open selected files by MIME type: openf
 Common: Change to selected directory from home: cdf
 Common: Change to selected directory from /: cdfr
 Common: Search home: findf
+Common: Search CWD: findfh
 Common: Search /: findfr
 Common: Print CWD directories: lsd
 Common: Print CWD sorted by size: lss
@@ -180,6 +181,7 @@ alias openf='fd --type file --hidden --exclude .git --print0 . / | fzf --multi -
 alias cdf='cd "$(fd --type directory --hidden --exclude .git --print0 . "$HOME/" | fzf --read0)"'
 alias cdfr='cd "$(fd --type directory --hidden --exclude .git --print0 . / | fzf --read0)"'
 alias findf='fd --hidden --exclude .git --print0 . "$HOME/" | fzf --multi --read0'
+alias findfh='fd --hidden --exclude .git --print0 . . | fzf --multi --read0'
 alias findfr='fd --hidden --exclude .git --print0 . / | fzf --multi --read0'
 alias ls='exa'
 alias lsd='exa --long --header --git --only-dirs'

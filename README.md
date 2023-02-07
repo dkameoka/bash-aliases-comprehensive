@@ -42,6 +42,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * cdf
 * cdfr
 * findf
+* findfh
 * findfr
 * ls
 * lsd
