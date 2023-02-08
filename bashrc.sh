@@ -274,7 +274,7 @@ alias pacman-installed-explicit='pacman --query --explicit | fzf --multi --no-so
 alias pacman-orphans='pacman --query --deps --quiet --unrequired | fzf --multi --no-sort'
 alias pacman-installed-foreign='pacman --query --foreign | fzf --multi --no-sort'
 alias pacman-list-missing-files='pacman --query --check | grep --invert-match " 0 missing"'
-alias pacman-rollback='find /var/cache/pacman/pkg/ -name *.zst -type f -printf "%C@ %Cc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0 --print0 | cut --zero-terminated --delimiter " " --fields 8- | xargs --no-run-if-empty --null --open-tty --verbose pacman --upgrade --confirm'
+alias pacman-rollback='find /var/cache/pacman/pkg/ -name "*.zst" -type f -printf "%C@ %Cc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0 --print0 | cut --zero-terminated --delimiter " " --fields 8- | xargs --no-run-if-empty --null --open-tty --verbose pacman --upgrade --confirm'
 
 alias paccache-clean='echo "Cleaning uninstalled cache"; paccache --remove --uninstalled --keep 0; echo "Cleaning cache"; paccache --remove --keep 2'
 
