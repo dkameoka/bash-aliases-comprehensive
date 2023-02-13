@@ -102,8 +102,8 @@ System: Show high memory usage processes: mem-usage
 Systemd: Enable and start systemd unit: systemctl-enable-now  unitname
 Systemd: Disable and stop systemd unit: systemctl-disable-now  unitname
 Systemd: List systemd units: systemctl-list-unit-files
-Systemd: List failed systemd units: systemctl-failed
-Systemd: List systemd timers: systemctl-timers
+Systemd: List failed systemd units: systemctl-list-units-failed
+Systemd: List systemd timers: systemctl-list-timers
 Systemd: Reload systemd configs: systemctl-daemon-reload
 Systemd: Reset failed systemd units: systemctl-reset-failed
 Systemd: Analyze systemd unit security: systemd-analyze-security
@@ -231,8 +231,8 @@ alias mem-usage='ps aux --sort -pmem,-pcpu | fzf --multi'
 alias systemctl-enable-now='systemctl enable --now'
 alias systemctl-disable-now='systemctl disable --now'
 alias systemctl-list-unit-files='systemctl list-unit-files'
-alias systemctl-failed='systemctl list-units --failed'
-alias systemctl-timers='systemctl list-timers --all'
+alias systemctl-list-units-failed='systemctl list-units --failed'
+alias systemctl-list-timers='systemctl list-timers --all'
 alias systemctl-daemon-reload='systemctl daemon-reload'
 alias systemctl-reset-failed='systemctl reset-failed'
 alias systemd-analyze-security='systemd-analyze security'

@@ -83,8 +83,8 @@ Review the bashrc.sh and run bashrc.sh as root.
 * systemctl-enable-now
 * systemctl-disable-now
 * systemctl-list-unit-files
-* systemctl-failed
-* systemctl-timers
+* systemctl-list-units-failed
+* systemctl-list-timers
 * systemctl-daemon-reload
 * systemctl-reset-failed
 * systemd-analyze-security
