@@ -115,6 +115,7 @@ Network: List active netfilter ruleset: nft-list-ruleset
 Network: Print a random IPv6 address for a random network and/or host: ipv6-rand-ip
 
 Git: Show lazygit: lg
+Git: Garbage collect with pruning and repacking. Don't modify the same repo while this command runs: git-gc-aggressive-prune
 
 History: Instead of turning history off, add a space infront of the command (ignoreboth enables this).
 History: Turn on history: history-on
@@ -246,6 +247,7 @@ alias ipv6-rand-ip='python -c "import secrets,ipaddress;print(str(ipaddress.IPv6
 
 ##### GIT #####
 alias lg='lazygit'
+alias git-gc-aggressive-prune='git gc --aggressive --prune=now'
 
 ##### HISTORY #####
 alias history-on='set -o history'

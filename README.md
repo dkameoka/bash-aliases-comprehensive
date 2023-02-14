@@ -94,6 +94,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * nft-list-ruleset
 * ipv6-rand-ip
 * lg
+* git-gc-aggressive-prune
 * history-on
 * history-off
 * hist
