@@ -34,7 +34,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * chown
 * mkdir
 * sudo
-* doas
+* rdo
 * xargsf
 * xargsfr
 * execf
