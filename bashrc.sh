@@ -155,6 +155,8 @@ Yay: List foreign (AUR) packages: yay-installed-foreign
 Yay: List missing package files: yay-list-missing-files
 Yay: Clean AUR cache: yay-clean-aur
 
+Arch: Build and install a PKGBUILD repository with makepkg: makepkg-install
+
 Template: Make a clip from a video: ffmpeg -ss 00:01:23 -to 00:04:56 -i input.mkv -codec copy output_clip.mkv
 Template: Select videos to compress with AV1: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace ffmpeg -i {} -vcodec libaom-av1 -crf 35 {}.av1.mkv
 Template: Select videos to compress with HEVC: fd --type file --print0 . ~/ | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace ffmpeg -i {} -vcodec libx265 -crf 28 {}.h265.mp4
@@ -297,6 +299,8 @@ alias yay-orphans='yay --query --deps --quiet --unrequired | fzf --multi --no-so
 alias yay-installed-foreign='yay --query --foreign | fzf --multi --no-sort'
 alias yay-list-missing-files='yay --query --check | grep --invert-match " 0 missing"'
 alias yay-clean-aur='yay --sync --clean --aur'
+
+alias makepkg-install='makepkg --install --syncdeps --rmdeps --clean'
 
 EOBRC
 ###########

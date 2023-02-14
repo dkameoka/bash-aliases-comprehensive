@@ -127,3 +127,4 @@ Review the bashrc.sh and run bashrc.sh as root.
 * yay-installed-foreign
 * yay-list-missing-files
 * yay-clean-aur
+* makepkg-install
