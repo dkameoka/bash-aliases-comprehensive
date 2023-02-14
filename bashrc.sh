@@ -89,6 +89,7 @@ Common: Remove selected items from /: rmfr
 Common: Remove selected items from CWD: rmfh
 Common: Minimal diff: diffm  old/item  new/item
 Common: Minimal git diff: gitdiffm  old/item  new/item
+Common: List files in tar archive: tar-list  tar.archive.file
 
 Files: Remove duplicate files using fdupes tool: files-dup-remove
 Files: Show largest files recursively from CWD: files-largest
@@ -215,6 +216,7 @@ alias mvtofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 |
 alias rmf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias rmfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias rmfh='find . -mindepth 1 -maxdepth 1 -print0 | sort --zero-terminated --ignore-case | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
+alias tar-list='tar --list --file'
 
 alias files-dup-remove='fdupes --size --time --delete .'
 alias files-largest='find . -type f -printf "%s %p\0" | sort --numeric-sort --reverse --zero-terminated | fzf --multi --no-sort --read0'
