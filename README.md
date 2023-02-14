@@ -73,12 +73,12 @@ Review the bashrc.sh and run bashrc.sh as root.
 * rmfh
 * diffm
 * gitdiffm
+* tar-zst
+* tar-extract
 * tar-list
 * files-dup-remove
 * files-largest
 * files-last-modified
-* files-tar-zst
-* files-tar-extract
 * cpu-usage
 * mem-usage
 * systemctl-enable-now

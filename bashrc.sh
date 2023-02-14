@@ -89,13 +89,14 @@ Common: Remove selected items from /: rmfr
 Common: Remove selected items from CWD: rmfh
 Common: Minimal diff: diffm  old/item  new/item
 Common: Minimal git diff: gitdiffm  old/item  new/item
-Common: List files in tar archive: tar-list  tar.archive.file
+
+Tar: Compress items into .tar.zst: tar-zst  archive_name.tar.zst  items...
+Tar: Extract tar archive into CWD: tar-extract  archive_name.tar.zst
+Tar: List files in tar archive: tar-list  tar.archive.file
 
 Files: Remove duplicate files using fdupes tool: files-dup-remove
 Files: Show largest files recursively from CWD: files-largest
 Files: Show newest files recursively from CWD: files-last-modified
-Files: Compress items into .tar.zst: files-tar-zst  archive_name.tar.zst  items...
-Files: Extract tar archive into CWD: files-tar-extract  archive_name.tar.zst
 
 System: Show high CPU usage processes: cpu-usage
 System: Show high memory usage processes: mem-usage
@@ -216,15 +217,16 @@ alias mvtofr='fd --type directory --hidden --print0 . / | fzf --read0 --print0 |
 alias rmf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias rmfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias rmfh='find . -mindepth 1 -maxdepth 1 -print0 | sort --zero-terminated --ignore-case | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
+alias diffm='diff --color=always --unified=0 --recursive --new-file --ignore-tab-expansion --ignore-trailing-space --ignore-blank-lines'
+alias gitdiffm='git diff --color=always --unified=0 --ignore-cr-at-eol --ignore-space-at-eol --ignore-blank-lines'
+
+alias tar-zst='tar --create --recursion --hard-dereference --dereference --verbose --zstd --file'
+alias tar-extract='tar --extract --verbose --file'
 alias tar-list='tar --list --file'
 
 alias files-dup-remove='fdupes --size --time --delete .'
 alias files-largest='find . -type f -printf "%s %p\0" | sort --numeric-sort --reverse --zero-terminated | fzf --multi --no-sort --read0'
 alias files-last-modified='find . -type f -not -path "*/\.git/*" -printf "%T@ %Tc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0'
-alias files-tar-zst='tar --create --recursion --hard-dereference --dereference --verbose --zstd --file'
-alias files-tar-extract='tar --extract --verbose --file'
-alias diffm='diff --color=always --unified=0 --recursive --new-file --ignore-tab-expansion --ignore-trailing-space --ignore-blank-lines'
-alias gitdiffm='git diff --color=always --unified=0 --ignore-cr-at-eol --ignore-space-at-eol --ignore-blank-lines'
 
 ##### SYSTEM #####
 alias cpu-usage='ps aux --sort -pcpu,-pmem | fzf --multi'
