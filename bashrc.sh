@@ -137,6 +137,7 @@ Pacman: List Pacman explicitly installed packages: pacman-installed-explicit
 Pacman: List Pacman orphaned packages: pacman-orphans
 Pacman: List foreign (AUR) packages: pacman-installed-foreign
 Pacman: List missing package files: pacman-list-missing-files
+Pacman: Find package that owns file: pacman-query-owns  path/to/file
 Pacman: Rollback selected Pacman packages from cache: pacman-rollback
 
 Pacman/Paccache: Remove all uninstalled package caches and keep only 2 installed versions: paccache-clean
@@ -153,7 +154,23 @@ Yay: List Pacman explicitly installed packages: yay-installed-explicit
 Yay: List Pacman orphaned packages: yay-orphans
 Yay: List foreign (AUR) packages: yay-installed-foreign
 Yay: List missing package files: yay-list-missing-files
+Yay: Find package that owns file: yay-query-owns  path/to/file
 Yay: Clean AUR cache: yay-clean-aur
+
+Pikaur: Search packages: pikaur-search  regex-pattern
+Pikaur: Install packages: pikaur-install  packages...
+Pikaur: Update system: pikaur-update
+Pikaur: Remove packages with parent and child dependencies: pikaur-remove  packages...
+Pikaur: Mark packages as explicitly installed (hidden from pikaur-orphans): pikaur-database-asexplicit  packages...
+Pikaur: Mark packages as non-explicitly installed (shown in pikaur-orphans): pikaur-database-asdeps  packages...
+Pikaur: Show packages' info: pikaur-info  packages...
+Pikaur: Show installed packages' info: pikaur-info-installed  packages...
+Pikaur: List Pacman explicitly installed packages: pikaur-installed-explicit
+Pikaur: List Pacman orphaned packages: pikaur-orphans
+Pikaur: List foreign (AUR) packages: pikaur-installed-foreign
+Pikaur: List missing package files: pikaur-list-missing-files
+Pikaur: Find package that owns file: pikaur-query-owns  path/to/file
+Pikaur: Clean AUR cache: pikaur-clean-aur
 
 Arch: Build and install a PKGBUILD repository with makepkg: makepkg-install
 
@@ -282,6 +299,7 @@ alias pacman-installed-explicit='pacman --query --explicit | fzf --multi --no-so
 alias pacman-orphans='pacman --query --deps --quiet --unrequired | fzf --multi --no-sort'
 alias pacman-installed-foreign='pacman --query --foreign | fzf --multi --no-sort'
 alias pacman-list-missing-files='pacman --query --check | grep --invert-match " 0 missing"'
+alias pacman-query-owns='pacman --query --owns'
 alias pacman-rollback='find /var/cache/pacman/pkg/ -name "*.zst" -type f -printf "%C@ %Cc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0 --print0 | cut --zero-terminated --delimiter " " --fields 8- | xargs --no-run-if-empty --null --open-tty --verbose pacman --upgrade --confirm'
 
 alias paccache-clean='echo "Cleaning uninstalled cache"; paccache --remove --uninstalled --keep 0; echo "Cleaning cache"; paccache --remove --keep 2'
@@ -298,7 +316,23 @@ alias yay-installed-explicit='yay --query --explicit | fzf --multi --no-sort'
 alias yay-orphans='yay --query --deps --quiet --unrequired | fzf --multi --no-sort'
 alias yay-installed-foreign='yay --query --foreign | fzf --multi --no-sort'
 alias yay-list-missing-files='yay --query --check | grep --invert-match " 0 missing"'
+alias yay-query-owns='yay --query --owns'
 alias yay-clean-aur='yay --sync --clean --aur'
+
+alias pikaur-search='pikaur --sync --search'
+alias pikaur-install='pikaur --sync'
+alias pikaur-update='pikaur --sync --refresh --sysupgrade'
+alias pikaur-remove='pikaur --remove --cascade --recursive'
+alias pikaur-database-asexplicit='pikaur --database --asexplicit'
+alias pikaur-database-asdeps='pikaur --database --asdeps'
+alias pikaur-info='pikaur --sync --info --info'
+alias pikaur-info-installed='pikaur --query --info --info'
+alias pikaur-installed-explicit='pikaur --query --explicit | fzf --multi --no-sort'
+alias pikaur-orphans='pikaur --query --deps --quiet --unrequired | fzf --multi --no-sort'
+alias pikaur-installed-foreign='pikaur --query --foreign | fzf --multi --no-sort'
+alias pikaur-list-missing-files='pikaur --query --check | grep --invert-match " 0 missing"'
+alias pikaur-query-owns='pikaur --query --owns'
+alias pikaur-clean-aur='pikaur --sync --clean --aur'
 
 alias makepkg-install='makepkg --install --syncdeps --rmdeps --clean'
 
