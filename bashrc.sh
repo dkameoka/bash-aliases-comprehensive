@@ -181,6 +181,8 @@ Template: Select images to convert to JPEGXL: fd --type file --print0 . ~/ | fzf
 Template: Ripgrep: rg --ignore-case/-i --hidden/-. --context/-C num-of-context-lines --file/-f "regex pattern" dir/or/file
 Template: Rename selected files using perl's expression. Remove --just-print to apply it: fd --print0 . "$HOME" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null perl-rename --just-print 's/\.jpeg$/\.jpg/'
 Template: Generate SSH keypair: ssh-keygen -t ed25519 -a 100 -f ~/.ssh/service_name_here -C "your@email.here"
+Template: Generate self-signed TLS 1.3 cert: certgen -duration 90000h0m0s -ed25519 -host "mysubdomain.duckdns.org"
+Template: Install cert globally (run as root): trust anchor --store public.crt
 Template: Create a Rock Ridge iso archive: mkisofs -rational-rock -follow-links -output output_file.iso dir/or/file
 Template: Burn iso to DVD/Bluray: growisofs -dvd-compat -speed=4 -Z /dev/device=/path/to/.iso
 
