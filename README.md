@@ -9,7 +9,7 @@
 
 ## Utilizes
 
-* exa: item listing
+* eza: item listing
 * fd: faster alternative to find. However, find is still needed for printf
 * fzf: fast fuzzy listing searcher
 * imv: interactive item renamer from renameutils
