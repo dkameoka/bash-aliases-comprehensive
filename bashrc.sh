@@ -89,6 +89,8 @@ Common: Remove selected items from /: rmfr
 Common: Remove selected items from CWD: rmfh
 Common: Minimal diff: diffm  old/item  new/item
 Common: Minimal git diff: gitdiffm  old/item  new/item
+Common: Enable globbing (*) of hidden files for current session: dot-glob
+Common: Disable globbing (*) of hidden files for current session: dot-glob-off
 
 Tar: Compress items into .tar.zst: tar-zst  archive_name.tar.zst  items...
 Tar: Extract tar archive into CWD: tar-extract  archive_name.tar.zst
@@ -239,6 +241,8 @@ alias rmfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no
 alias rmfh='find . -mindepth 1 -maxdepth 1 -print0 | sort --zero-terminated --ignore-case | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null --verbose rm --interactive=once --recursive --verbose'
 alias diffm='diff --color=always --unified=0 --recursive --new-file --ignore-tab-expansion --ignore-trailing-space --ignore-blank-lines'
 alias gitdiffm='git diff --color=always --unified=0 --ignore-cr-at-eol --ignore-space-at-eol --ignore-blank-lines'
+alias dot-glob='shopt -s dotglob'
+alias dot-glob-off='shopt -u dotglob'
 
 alias tar-zst='tar --create --recursion --hard-dereference --dereference --verbose --zstd --file'
 alias tar-extract='tar --extract --verbose --file'

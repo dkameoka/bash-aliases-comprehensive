@@ -73,6 +73,8 @@ Review the bashrc.sh and run bashrc.sh as root.
 * rmfh
 * diffm
 * gitdiffm
+* dot-glob
+* dot-glob-off
 * tar-zst
 * tar-extract
 * tar-list
