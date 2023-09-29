@@ -2,6 +2,27 @@
 
 set -o errexit -o noclobber -o nounset -o pipefail
 
+
+# Report missing commands
+check_command () {
+    if ! command -v "$1" &>/dev/null; then
+        echo "Missing command: $1"
+    fi
+}
+
+check_command eza
+check_command fd
+check_command fzf
+check_command imv
+check_command python3
+check_command fdupes
+check_command nethogs
+check_command lazygit
+check_command ffmpeg
+check_command cjxl
+check_command paccache
+
+
 mkdir --parents --verbose /usr/local/bin/
 rm --force --verbose /usr/local/bin/date-tag
 cat << 'EODT' > /usr/local/bin/date-tag
