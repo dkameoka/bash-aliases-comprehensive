@@ -302,7 +302,7 @@ alias git-gc-aggressive-prune='git gc --aggressive --prune=now'
 alias history-on='set -o history'
 alias history-off='set +o history'
 alias hist='history | sort --key 2 | less +G'
-alias histf='eval $(history | fzf --multi --tac --no-sort | sed --regexp-extended --expression "s/^ *[0-9]+  [0-9\-]+ [0-9:]+ //" | xargs --no-run-if-empty --replace --delimiter "\n" echo "fc -s {}")'
+alias histf='eval $(history | fzf --multi --tac --no-sort | sed --regexp-extended --expression "s/^ *([0-9]+)  [0-9\-]+ [0-9:]+ .*/\1/" | xargs --no-run-if-empty --replace --delimiter "\n" echo "fc -s {}")'
 HISTTIMEFORMAT='%F %T '
 HISTFILESIZE=-1
 HISTSIZE=-1
