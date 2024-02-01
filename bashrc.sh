@@ -225,7 +225,6 @@ alias renamef='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf -
 alias renamefr='fd --type file --type symlink --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --replace --null imv {}'
 alias prepend-date='fd --type file --type symlink --hidden --print0 . "$HOME" | fzf --multi --read0 --print0 | date-tag'
 alias prepend-dater='fd --type file --type symlink --hidden --print0 . / | fzf --multi --read0 --print0 | date-tag'
-alias vim='nvim'
 alias nvimf='fd --type file --type symlink --hidden --exclude .git --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null nvim'
 alias nvimfr='fd --type file --type symlink --hidden --exclude .git --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null nvim'
 alias cpf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --open-tty --null cp --interactive --recursive --verbose --target-directory .'
