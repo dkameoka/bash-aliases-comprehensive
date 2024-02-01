@@ -165,21 +165,6 @@ Pacman: Rollback selected Pacman packages from cache: pacman-rollback
 
 Pacman/Paccache: Remove all uninstalled package caches and keep only 2 installed versions: paccache-clean
 
-Yay: Search packages: yay-search  regex-pattern
-Yay: Install packages: yay-install  packages...
-Yay: Update system (or just run "yay"): yay-update
-Yay: Remove packages with parent and child dependencies: yay-remove  packages...
-Yay: Mark packages as explicitly installed (hidden from yay-orphans): yay-database-asexplicit  packages...
-Yay: Mark packages as non-explicitly installed (shown in yay-orphans): yay-database-asdeps  packages...
-Yay: Show packages' info: yay-info  packages...
-Yay: Show installed packages' info: yay-info-installed  packages...
-Yay: List Pacman explicitly installed packages: yay-installed-explicit
-Yay: List Pacman orphaned packages: yay-orphans
-Yay: List foreign (AUR) packages: yay-installed-foreign
-Yay: List missing package files: yay-list-missing-files
-Yay: Find package that owns file: yay-query-owns  path/to/file
-Yay: Clean AUR cache: yay-clean-aur
-
 Pikaur: Search packages: pikaur-search  regex-pattern
 Pikaur: Install packages: pikaur-install  packages...
 Pikaur: Update system: pikaur-update
@@ -325,21 +310,6 @@ alias pacman-query-owns='pacman --query --owns'
 alias pacman-rollback='find /var/cache/pacman/pkg/ -name "*.zst" -type f -printf "%C@ %Cc %p\0" | sort --numeric-sort --reverse --zero-terminated | cut --zero-terminated --delimiter " " --fields 2- | fzf --multi --no-sort --read0 --print0 | cut --zero-terminated --delimiter " " --fields 8- | xargs --no-run-if-empty --null --open-tty --verbose pacman --upgrade --confirm'
 
 alias paccache-clean='echo "Cleaning uninstalled cache"; paccache --remove --uninstalled --keep 0; echo "Cleaning cache"; paccache --remove --keep 2'
-
-alias yay-search='yay --sync --search'
-alias yay-install='yay --sync'
-alias yay-update='yay --sync --refresh --sysupgrade'
-alias yay-remove='yay --remove --cascade --recursive'
-alias yay-database-asexplicit='yay --database --asexplicit'
-alias yay-database-asdeps='yay --database --asdeps'
-alias yay-info='yay --sync --info --info'
-alias yay-info-installed='yay --query --info --info'
-alias yay-installed-explicit='yay --query --explicit | fzf --multi --no-sort'
-alias yay-orphans='yay --query --deps --quiet --unrequired | fzf --multi --no-sort'
-alias yay-installed-foreign='yay --query --foreign | fzf --multi --no-sort'
-alias yay-list-missing-files='yay --query --check | grep --invert-match " 0 missing"'
-alias yay-query-owns='yay --query --owns'
-alias yay-clean-aur='yay --sync --clean --aur'
 
 alias pikaur-search='pikaur --sync --search'
 alias pikaur-install='pikaur --sync'
