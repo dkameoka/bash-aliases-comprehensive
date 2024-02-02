@@ -33,6 +33,7 @@ Review the bashrc.sh and run bashrc.sh as root.
 * chmod
 * chown
 * mkdir
+* suc
 * xargsf
 * xargsfr
 * execf

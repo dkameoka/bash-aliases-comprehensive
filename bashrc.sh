@@ -205,6 +205,12 @@ alias chmod='chmod --changes'
 alias chown='chown --changes'
 alias mkdir='mkdir --parents --verbose'
 
+suc () {
+    args="$@"
+    echo "su --command \"$args\""
+    su --command "$args"
+}
+
 alias xargsf='fd --hidden --print0 . "$HOME/" | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace'
 alias xargsfr='fd --hidden --print0 . / | fzf --multi --read0 --print0 | xargs --no-run-if-empty --null --replace'
 alias execf='"$(fd --type executable --hidden --exclude .git --print0 . / | fzf --read0)"'
