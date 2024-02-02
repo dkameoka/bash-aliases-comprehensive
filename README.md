@@ -33,8 +33,6 @@ Review the bashrc.sh and run bashrc.sh as root.
 * chmod
 * chown
 * mkdir
-* sudo
-* rdo
 * xargsf
 * xargsfr
 * execf
@@ -55,7 +53,6 @@ Review the bashrc.sh and run bashrc.sh as root.
 * renamefr
 * prepend-date
 * prepend-dater
-* vim
 * nvimf
 * nvimfr
 * cpf
@@ -117,20 +114,6 @@ Review the bashrc.sh and run bashrc.sh as root.
 * pacman-query-owns
 * pacman-rollback
 * paccache-clean
-* yay-search
-* yay-install
-* yay-update
-* yay-remove
-* yay-database-asexplicit
-* yay-database-asdeps
-* yay-info
-* yay-info-installed
-* yay-installed-explicit
-* yay-orphans
-* yay-installed-foreign
-* yay-list-missing-files
-* yay-query-owns
-* yay-clean-aur
 * pikaur-search
 * pikaur-install
 * pikaur-update
